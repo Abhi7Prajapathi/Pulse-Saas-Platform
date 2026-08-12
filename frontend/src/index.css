@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core surfaces */
+  --color-surface-0: #0b1220;      /* deepest navy — sidebar */
+  --color-surface-1: #0f1729;      /* app background */
+  --color-surface-2: #16213a;      /* cards / panels */
+  --color-surface-3: #1e2c4a;      /* raised / hover */
+  --color-border: #26324d;
+  --color-border-light: #324566;
+
+  /* Text */
+  --color-text-primary: #eef2f8;
+  --color-text-secondary: #97a6c4;
+  --color-text-muted: #64749a;
+
+  /* Brand */
+  --color-teal-500: #14b8a6;
+  --color-teal-400: #2dd4bf;
+  --color-teal-600: #0d9488;
+  --color-teal-950: #042f2c;
+
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+
+  --color-danger: #f87171;
+  --color-success: #34d399;
+
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--color-surface-1);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  * {
+    border-color: var(--color-border);
+  }
+  ::selection {
+    background-color: var(--color-teal-600);
+    color: white;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-teal-400);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-light);
+    border-radius: 4px;
+  }
+}
