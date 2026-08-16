@@ -78,7 +78,7 @@ DATABASES = {
         "NAME": os.environ.get("POSTGRES_DB", "saas_platform"),
         "USER": os.environ.get("POSTGRES_USER", "saas_user"),
         "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "saas_password"),
-        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+        "HOST": os.environ.get("POSTGRES_HOST", "host.docker.internal"),
         "PORT": os.environ.get("POSTGRES_PORT", "5432"),
         "CONN_MAX_AGE": 60,
     }
