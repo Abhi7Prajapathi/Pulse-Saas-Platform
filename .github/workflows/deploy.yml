@@ -35,13 +35,13 @@ jobs:
         run: |
           echo "Waiting for services to become available..."
           
-          curl --retry 10 --retry-delay 3 --retry-all-errors --I http://localhost:8000/ || {
+          curl --retry 10 --retry-delay 3 --retry-all-errors --head http://localhost:8000/ || {
             echo "Backend failed to respond!"
             docker compose logs backend
             exit 1
           }
 
-          curl --retry 10 --retry-delay 3 --retry-all-errors --fail http://localhost:5173/ || {
+          curl --retry 10 --retry-delay 3 --retry-all-errors --head http://localhost:5173/ || {
             echo "Frontend failed to respond!"
             docker compose logs frontend
             exit 1
