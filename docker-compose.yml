@@ -48,7 +48,8 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=http://localhost:8000/api
+      # - VITE_API_URL=http://localhost:8000/api
+      - VITE_API_URL=http://myapp.local
     depends_on:
       - backend
 

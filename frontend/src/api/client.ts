@@ -1,6 +1,7 @@
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+// const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 
 const ACCESS_KEY = "pulse_access_token";
 const REFRESH_KEY = "pulse_refresh_token";
