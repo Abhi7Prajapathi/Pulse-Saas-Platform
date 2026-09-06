@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: app-namespace
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: abhilashr7/pulse-saas-platform-backend
+        ports:
+        - containerPort: 8080
+        envFrom:
+         - configMapRef:
+            name: app-config
+         - secretRef:
+             name: app-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: app-namespace
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: backend
