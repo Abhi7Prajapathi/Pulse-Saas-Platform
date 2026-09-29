@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "apps.organizations",
     "apps.projects",
     "apps.tasks",
+    "django-prometheus",
 ]
 
 MIDDLEWARE = [
