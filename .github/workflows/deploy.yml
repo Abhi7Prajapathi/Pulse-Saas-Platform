@@ -34,7 +34,7 @@ jobs:
       - name: Build & push Docker backend image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: backend/
           file: backend/Dockerfile.backend
           push: true
           tags: abhilashr7/pulse-saas-platform-backend:lastest
@@ -42,7 +42,7 @@ jobs:
       - name: Build & push Docker frontend image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: frontend/
           file: frontend/Dockerfile.frontend
           push: true
           tags: abhilashr7/pulse-saas-platform-frontend:lastest
