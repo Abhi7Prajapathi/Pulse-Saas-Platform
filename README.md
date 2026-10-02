@@ -51,13 +51,65 @@ flowchart LR
 
 ```
 pulse-saas-platform/
-├── .github/workflows/    # CI/CD
-├── backend/              # Django API (apps/, config/, requirements/, Dockerfile)
-├── frontend/             # React app (src/)
-├── k8s/                  # Kubernetes manifests (ingress.yaml, monitoring.yaml, ...)
-├── monitoring/           # Prometheus config + Grafana dashboard
-├── docker-compose.yml
-├── DEPLOYMENT.md
+├── .github/
+│   └── workflows/                  # CI/CD pipelines (GitHub Actions)
+├── backend/                        # Django REST API
+│   ├── apps/
+│   │   ├── accounts/               # custom User model, auth (JWT) endpoints
+│   │   │   ├── migrations/
+│   │   │   └── tests/
+│   │   ├── organizations/          # organizations, memberships, tenant isolation, permissions
+│   │   │   ├── management/
+│   │   │   │   └── commands/       # seed_data command (demo orgs and users)
+│   │   │   ├── migrations/
+│   │   │   └── tests/              # includes tenant isolation tests
+│   │   ├── projects/               # project model + API
+│   │   │   ├── migrations/
+│   │   │   └── tests/
+│   │   ├── tasks/                  # task model + API
+│   │   │   ├── migrations/
+│   │   │   └── tests/
+│   │   └── common/                 # pagination, exception handling, response helpers
+│   ├── config/
+│   │   ├── settings/               # base.py, development.py, production.py
+│   │   ├── urls.py
+│   │   ├── wsgi.py
+│   │   └── asgi.py
+│   ├── requirements/               # base.txt, development.txt, production.txt
+│   ├── Dockerfile
+│   ├── manage.py
+│   └── .env.example
+├── frontend/                       # React + Vite + TypeScript + Tailwind
+│   ├── public/
+│   ├── src/
+│   │   ├── api/                    # API client (auth, organizations, projects, tasks)
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   ├── ui/                 # Button, Card, Badge, Input
+│   │   │   ├── layout/             # AppLayout, OrgSwitcher
+│   │   │   └── common/             # Modal, Toast, PageHeader, ProtectedRoute
+│   │   ├── context/                # AuthContext, OrganizationContext
+│   │   ├── pages/
+│   │   │   ├── auth/
+│   │   │   ├── dashboard/
+│   │   │   ├── projects/
+│   │   │   ├── tasks/
+│   │   │   ├── members/
+│   │   │   └── settings/
+│   │   └── types/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── .env.example
+├── k8s/                            # Kubernetes manifests (namespace: app-namespace)
+│   ├── backend / frontend          # Deployments + Services
+│   ├── postgres / redis            # database and cache
+│   ├── ingress.yaml                # NGINX ingress (host: myapp.local)
+│   └── monitoring.yaml             # Prometheus + Grafana + RBAC
+├── monitoring/
+│   ├── prometheus/                 # Prometheus configuration
+│   └── pulse-dashboard.json        # Grafana dashboard
+├── docker-compose.yml              # run the full stack locally with Docker
+├── DEPLOYMENT.md                   # deployment notes
 └── README.md
 ```
 
