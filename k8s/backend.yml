@@ -16,6 +16,7 @@ spec:
       containers:
       - name: backend
         image: abhilashr7/pulse-saas-platform-backend
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         envFrom:
